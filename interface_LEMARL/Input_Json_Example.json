@@ -1,0 +1,318 @@
+{
+  "system_description": {
+    "topology": {
+      "power_nodes": 33,
+      "thermal_nodes": 12,
+      "coupling_points": ["node_3", "node_8"]
+    },
+    "units": [
+      {
+        "type": "CHP",
+        "id": "CHP_1",
+        "node": 3,
+        "capacity": {
+          "P_min": 1.0,
+          "P_max": 5.5,
+          "H_min": 0.0,
+          "H_max": 4.5
+        },
+        "parameters": {
+          "c_m": 0.8,
+          "c_k": 0.5,
+          "c_v": 0.6,
+          "R_ramp": 0.5,
+          "GCI": 0.95
+        },
+        "cost_coefficients": {
+          "c1": 5,
+          "c2": 50,
+          "c3": 1.50,
+          "c4": 1,
+          "c5": 35,
+          "c6": 0.01
+        }
+      },
+      {
+        "type": "DG",
+        "id": "DG_1",
+        "node": 6,
+        "capacity": {
+          "P_min": 0.0,
+          "P_max": 4.5,
+          "Q_min": 0.0,
+          "Q_max": 5.294
+        },
+        "parameters": {
+          "R_ramp": 0.4,
+          "GCI": 0.70
+        },
+        "cost_coefficients": {
+          "c1": 1,
+          "c2": 50
+        }
+      },
+      {
+        "type": "DG",
+        "id": "DG_2",
+        "node": 11,
+        "capacity": {
+          "P_min": 0.0,
+          "P_max": 4.0,
+          "Q_min": 0.0,
+          "Q_max": 4.706
+        },
+        "parameters": {
+          "R_ramp": 0.35,
+          "GCI": 0.53
+        },
+        "cost_coefficients": {
+          "c1": 2,
+          "c2": 45
+        }
+      },
+      {
+        "type": "EB",
+        "id": "EB_1",
+        "node": 8,
+        "capacity": {
+          "P_min": 0.0,
+          "P_max": 3.0,
+          "H_max": 2.5
+        },
+        "parameters": {
+          "eta": 0.95,
+          "c_EB": 20
+        }
+      },
+      {
+        "type": "Wind",
+        "id": "WT_1",
+        "node": 14,
+        "capacity": {
+          "P_max": 2.5
+        },
+        "parameters": {
+          "GCI": 0.0,
+          "c_curtailment": 40
+        }
+      },
+      {
+        "type": "Wind",
+        "id": "WT_2",
+        "node": 25,
+        "capacity": {
+          "P_max": 3.0
+        },
+        "parameters": {
+          "GCI": 0.0,
+          "c_curtailment": 40
+        }
+      },
+      {
+        "type": "PV",
+        "id": "PV_1",
+        "node": 18,
+        "capacity": {
+          "P_max": 2.5
+        },
+        "parameters": {
+          "GCI": 0.0,
+          "c_curtailment": 40
+        }
+      },
+      {
+        "type": "PV",
+        "id": "PV_2",
+        "node": 30,
+        "capacity": {
+          "P_max": 2.0
+        },
+        "parameters": {
+          "GCI": 0.0,
+          "c_curtailment": 40
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_1",
+        "node": 3,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 25
+        },
+        "parameters": {
+          "alpha": 0.9884,
+          "beta": 0.9259,
+          "gamma": 0.0116,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_2",
+        "node": 5,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 25
+        },
+        "parameters": {
+          "alpha": 0.9884,
+          "beta": 0.9259,
+          "gamma": 0.0116,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_3",
+        "node": 6,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 30
+        },
+        "parameters": {
+          "alpha": 0.99,
+          "beta": 0.8333,
+          "gamma": 0.01,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_4",
+        "node": 8,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 30
+        },
+        "parameters": {
+          "alpha": 0.99,
+          "beta": 0.8333,
+          "gamma": 0.01,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_5",
+        "node": 9,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 30
+        },
+        "parameters": {
+          "alpha": 0.99,
+          "beta": 0.8333,
+          "gamma": 0.01,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_6",
+        "node": 11,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 35
+        },
+        "parameters": {
+          "alpha": 0.9913,
+          "beta": 0.7576,
+          "gamma": 0.0087,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      },
+      {
+        "type": "TCL",
+        "id": "TCL_7",
+        "node": 12,
+        "capacity": {
+          "H_min": 0,
+          "H_max": 35
+        },
+        "parameters": {
+          "alpha": 0.9913,
+          "beta": 0.7576,
+          "gamma": 0.0087,
+          "T_min": 20,
+          "T_max": 24,
+          "T_init": 21
+        }
+      }
+    ],
+    "time_horizon": {
+      "total_periods": 96,
+      "resolution_minutes": 15,
+      "description": "24 hours with 15-minute resolution"
+    }
+  },
+  "constraints": {
+    "power_balance": true,
+    "thermal_balance": true,
+    "voltage_limits": {
+      "V_min": 0.95,
+      "V_max": 1.05,
+      "base_voltage_kV": 12.66
+    },
+    "temperature_limits": {
+      "T_supply_min": 60,
+      "T_supply_max": 90,
+      "T_return_min": 40,
+      "T_return_max": 60,
+      "T_indoor_min": 20,
+      "T_indoor_max": 24
+    },
+    "ramping_limits": {
+      "CHP_1": 0.5,
+      "DG_1": 0.4,
+      "DG_2": 0.35
+    },
+    "carbon_limit": 110,
+    "grid_purchase_limit": {
+      "description": "15% of total installed capacity",
+      "P_max": 3.585,
+      "Q_max": 4.218
+    },
+    "DR_adjustable_ratio": 0.20,
+    "power_factor": 0.85
+  },
+  "objective_weights": {
+    "cost": 0.30,
+    "carbon": 0.35,
+    "renewable_utilization": 0.20,
+    "load_balance": 0.15,
+    "description": "Weights for reward shaping term, LLM reward uses binary logic"
+  },
+  "statistics": {
+    "load_min": 2.5,
+    "load_max": 8.2,
+    "load_mean": 5.35,
+    "carbon_price": 42,
+    "carbon_factor": {
+      "CHP": 0.95,
+      "DG_1": 0.70,
+      "DG_2": 0.53,
+      "Grid": 0.60,
+      "Renewable": 0.0
+    },
+    "electricity_price_range": [30, 150],
+    "expected_results": {
+      "total_cost": 13327.71,
+      "total_carbon": 101.75,
+      "renewable_curtailment": 1.50,
+      "load_adjustment_rate": 0.0672
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IES_LLM_Generator_Input",
+  "type": "object",
+  "required": ["system_description", "constraints", "objective_weights", "statistics"],
+  "properties": {
+    "system_description": {
+      "type": "object",
+      "required": ["topology", "units", "time_horizon"],
+      "properties": {
+        "topology": {
+          "type": "object",
+          "properties": {
+            "power_nodes": {"type": "integer", "minimum": 1},
+            "thermal_nodes": {"type": "integer", "minimum": 0},
+            "coupling_points": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"enum": ["CHP", "DG", "EB", "Wind", "PV", "DR", "TCL"]},
+              "id": {"type": "string"},
+              "node": {"type": "integer"},
+              "capacity": {"type": "object", "properties": {
+                "P_min": {"type": "number"},
+                "P_max": {"type": "number"},
+                "H_min": {"type": "number"},
+                "H_max": {"type": "number"}
+              }}
+            }
+          }
+        },
+        "time_horizon": {
+          "type": "object",
+          "properties": {
+            "total_periods": {"type": "integer"},
+            "resolution_minutes": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "power_balance": {"type": "boolean", "default": true},
+        "thermal_balance": {"type": "boolean", "default": true},
+        "voltage_limits": {"type": "object", "properties": {
+          "V_min": {"type": "number"},
+          "V_max": {"type": "number"}
+        }},
+        "temperature_limits": {"type": "object", "properties": {
+          "T_supply_min": {"type": "number"},
+          "T_supply_max": {"type": "number"},
+          "T_return_min": {"type": "number"},
+          "T_return_max": {"type": "number"}
+        }},
+        "ramping_limits": {"type": "object"},
+        "carbon_limit": {"type": "number", "description": "Maximum Allowable Carbon Emissions (tons)"}
+      }
+    },
+    "objective_weights": {
+      "type": "object",
+      "required": ["cost", "carbon", "renewable_utilization", "load_balance"],
+      "properties": {
+        "cost": {"type": "number", "minimum": 0, "maximum": 1},
+        "carbon": {"type": "number", "minimum": 0, "maximum": 1},
+        "renewable_utilization": {"type": "number", "minimum": 0, "maximum": 1},
+        "load_balance": {"type": "number", "minimum": 0, "maximum": 1},
+        "voltage_deviation": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "description": "The sum of the weights should equal 1.0."
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "load_min": {"type": "number"},
+        "load_max": {"type": "number"},
+        "load_mean": {"type": "number"},
+        "carbon_price": {"type": "number"},
+        "carbon_factor": {"type": "object"},
+        "electricity_price": {"type": "array", "items": {"type": "number"}}
+      }
+    }
+  }
+}
